@@ -6,7 +6,3 @@ ghost({
 }).then(function (ghostServer) {
     ghostServer.start();
 });
-
-
-docker build -t nodeapp .
-docker run -it -e NODE_ENV=production -p 80:2368 --link kpdb:kpdb --rm nodeapp /bin/bash
