@@ -13,6 +13,7 @@
   "author": "theverything (Jeffrey Horn)",
   "license": "MIT",
   "dependencies": {
-    "ghost": "^0.5.2"
+    "ghost": "^0.5.2",
+    "pg": "^3.4.5"
   }
 }
