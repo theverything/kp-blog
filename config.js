@@ -15,7 +15,6 @@ config = {
             client: 'pg',
             connection: {
                 host     : db.hostname,
-                port     : db.port,
                 user     : 'postgres',
                 password : '',
                 database : 'kp_blog',
