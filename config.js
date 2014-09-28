@@ -3,14 +3,22 @@ var path = require('path'),
 
 var parse = require('url').parse;
 var db = parse(process.env.KPDB_PORT);
+var mguser = parse(process.env.MG_USER);
+var mgpassword = parse(process.env.MG_PASSWORD);
 
 config = {
-    // ### Production
-    // When running Ghost in the wild, use the production environment
-    // Configure your URL and mail settings here
     production: {
         url: 'http://127.0.0.1:2368',
-        mail: {},
+        mail: {
+            transport: 'SMTP',
+            options: {
+                service: 'Mailgun',
+                auth: {
+                    user: mguser,
+                    pass: mgpassword
+              }
+          }
+        },
         database: {
             client: 'pg',
             connection: {
@@ -22,34 +30,13 @@ config = {
             }
         },
         server: {
-            // Host to be passed to node's `net.Server#listen()`
             host: '0.0.0.0',
-            // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
             port: '2368'
         }
     },
-
-    // ### Development **(default)**
     development: {
-        // The url to use when providing links to the site, E.g. in RSS and email.
-        // Change this to your Ghost blogs published URL.
         url: 'http://localhost:2368',
-
-        // Example mail config
-        // Visit http://support.ghost.org/mail for instructions
-        // ```
-        //  mail: {
-        //      transport: 'SMTP',
-        //      options: {
-        //          service: 'Mailgun',
-        //          auth: {
-        //              user: '', // mailgun username
-        //              pass: ''  // mailgun password
-        //          }
-        //      }
-        //  },
-        // ```
-
+        mail: {},
         database: {
             client: 'sqlite3',
             connection: {
@@ -58,9 +45,7 @@ config = {
             debug: false
         },
         server: {
-            // Host to be passed to node's `net.Server#listen()`
             host: '127.0.0.1',
-            // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
             port: '2368'
         }
     }
