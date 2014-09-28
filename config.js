@@ -5,10 +5,12 @@ var parse = require('url').parse;
 var db = parse(process.env.KPDB_PORT);
 var mguser = process.env.MG_USER;
 var mgpassword = process.env.MG_PASSWORD;
+var pguser = process.env.PG_USER;
+var pgpassword = process.env.PG_PASSWORD;
 
 config = {
     production: {
-        url: 'http://192.241.220.18',
+        url: 'http://blog.kat-park.com',
         mail: {
             transport: 'SMTP',
             options: {
@@ -23,8 +25,8 @@ config = {
             client: 'pg',
             connection: {
                 host     : db.hostname,
-                user     : 'postgres',
-                password : '',
+                user     : pguser,
+                password : pgpassword,
                 database : 'kp_blog',
                 charset  : 'utf8'
             }
