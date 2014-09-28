@@ -3,12 +3,12 @@ var path = require('path'),
 
 var parse = require('url').parse;
 var db = parse(process.env.KPDB_PORT);
-var mguser = parse(process.env.MG_USER);
-var mgpassword = parse(process.env.MG_PASSWORD);
+var mguser = process.env.MG_USER;
+var mgpassword = process.env.MG_PASSWORD;
 
 config = {
     production: {
-        url: 'http://127.0.0.1:2368',
+        url: 'http://192.241.220.18',
         mail: {
             transport: 'SMTP',
             options: {
